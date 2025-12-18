@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <section id="step-1" class="screen active">
+        <div class="envelope-container">
+            <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+                <div class="envelope-back"></div>
+                <div class="letter" id="letter">
+                    <div class="letter-inner">
+                        <div id="lottie-heart-inner" class="heart-box"></div>
+                        <p class="question">Пойдёшь со мной на свидание?</p>
+                        <div class="options-row">
+                            <button class="btn-yes" onclick="event.stopPropagation(); nextStep(2)">Да!</button>
+                            <button class="btn-no" id="no-btn" onmouseover="moveNoInsideLetter()" onclick="event.stopPropagation()">Нет</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="envelope-front"></div>
+                <div class="top-flap"></div>
+                <div class="wax-seal" id="wax-seal"><div class="wax-heart"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step-2" class="screen">
+        <div class="card">
+            <div id="lottie-date-icon" class="lottie-container icon-date"></div>
+            <h2 class="title">Выбери день</h2>
+            <div class="input-container">
+                <input type="text" id="date" class="input-style" placeholder="Когда тебе удобно?" readonly>
+            </div>
+            <button class="btn-full" onclick="nextStep(3)">Далее</button>
+        </div>
+    </section>
+
+    <section id="step-3" class="screen">
+        <div class="card">
+            <div id="lottie-time-icon" class="lottie-container icon-time"></div>
+            <h2 class="title">Во сколько?</h2>
+            <div class="input-container">
+                <input type="text" id="time" class="input-style" placeholder="Выбери время" readonly>
+            </div>
+            <button class="btn-full" onclick="nextStep(4)">Далее</button>
+        </div>
+    </section>
+
+    <section id="step-4" class="screen">
+        <div class="card">
+            <div id="lottie-place-icon" class="lottie-container icon-place"></div>
+            <h2 class="title">Где встретимся?</h2>
+            <div class="input-container">
+                <input type="text" id="place" class="input-style" placeholder="Место...">
+                <textarea id="wish" class="text-area-style" placeholder="Пожелания..."></textarea>
+            </div>
+            <button id="final-send-btn" class="btn-full" onclick="sendToTelegram()">Отправить...</button>
+        </div>
+    </section>
+
+    <section id="step-5" class="screen">
+        <div id="lottie-success" class="lottie-container icon-finish"></div>
+        <div class="finish-text">
+            <h2 class="line">Улетает далеко,</h2>
+            <h2 class="line">похоже ко мне в сердце</h2>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
