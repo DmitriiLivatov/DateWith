@@ -1,124 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-
-    <!-- Responsive layout, disable zoom -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <!-- Page title -->
     <title>❤️</title>
-
-    <!-- Main styles -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Flatpickr styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <!-- Lottie animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-
-    <!-- Date & time picker -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 </head>
 <body>
 
-<!-- App wrapper -->
 <div id="app">
-
-    <!-- STEP 1: Envelope with question -->
     <section id="step-1" class="screen active">
         <div class="envelope-container">
             <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
-
-                <!-- Envelope parts -->
                 <div class="envelope-back"></div>
-
-                <!-- Letter content -->
                 <div class="letter" id="letter">
                     <div class="letter-inner">
-
-                        <!-- Heart animation -->
                         <div id="lottie-heart-inner" class="heart-box"></div>
-
-                        <!-- Main question -->
-                        <p class="question">Will you go on a date with me?</p>
-
-                        <!-- Answer buttons -->
+                        <p class="question">Пойдёшь со мной на свидание?</p>
                         <div class="options-row">
-                            <button class="btn-yes"
-                                    onclick="event.stopPropagation(); nextStep(2)">
-                                Yes
-                            </button>
-
-                            <button class="btn-no"
-                                    id="no-btn"
-                                    onmouseover="moveNoInsideLetter()"
-                                    onclick="event.stopPropagation()">
-                                No
-                            </button>
+                            <button class="btn-yes" onclick="event.stopPropagation(); nextStep(2)">Да!</button>
+                            <button class="btn-no" id="no-btn" onmouseover="moveNoInsideLetter()" onclick="event.stopPropagation()">Нет</button>
                         </div>
                     </div>
                 </div>
-
                 <div class="envelope-front"></div>
                 <div class="top-flap"></div>
-
-                <!-- Wax seal -->
-                <div class="wax-seal" id="wax-seal">
-                    <div class="wax-heart"></div>
-                </div>
+                <div class="wax-seal" id="wax-seal"><div class="wax-heart"></div></div>
             </div>
         </div>
     </section>
 
-    <!-- STEP 2: Choose date -->
     <section id="step-2" class="screen">
         <div class="card">
-            <div id="lottie-date-icon" class="lottie-container"></div>
-            <h2>Select a date</h2>
-
-            <input type="text" id="date" readonly placeholder="Choose a day">
-            <button onclick="nextStep(3)">Next</button>
+            <div id="lottie-date-icon" class="lottie-container icon-date"></div>
+            <h2 class="title">Выбери день</h2>
+            <div class="input-container">
+                <input type="text" id="date" class="input-style" placeholder="Когда тебе удобно?" readonly>
+            </div>
+            <button class="btn-full" onclick="nextStep(3)">Далее</button>
         </div>
     </section>
 
-    <!-- STEP 3: Choose time -->
     <section id="step-3" class="screen">
         <div class="card">
-            <div id="lottie-time-icon" class="lottie-container"></div>
-            <h2>Select time</h2>
-
-            <input type="text" id="time" readonly placeholder="Choose time">
-            <button onclick="nextStep(4)">Next</button>
+            <div id="lottie-time-icon" class="lottie-container icon-time"></div>
+            <h2 class="title">Во сколько?</h2>
+            <div class="input-container">
+                <input type="text" id="time" class="input-style" placeholder="Выбери время" readonly>
+            </div>
+            <button class="btn-full" onclick="nextStep(4)">Далее</button>
         </div>
     </section>
 
-    <!-- STEP 4: Place and wishes -->
     <section id="step-4" class="screen">
         <div class="card">
-            <div id="lottie-place-icon" class="lottie-container"></div>
-            <h2>Meeting place</h2>
-
-            <input type="text" id="place" placeholder="Place">
-            <textarea id="wish" placeholder="Notes"></textarea>
-
-            <button onclick="sendToTelegram()">Send</button>
+            <div id="lottie-place-icon" class="lottie-container icon-place"></div>
+            <h2 class="title">Где встретимся?</h2>
+            <div class="input-container">
+                <input type="text" id="place" class="input-style" placeholder="Место...">
+                <textarea id="wish" class="text-area-style" placeholder="Пожелания..."></textarea>
+            </div>
+            <button id="final-send-btn" class="btn-full" onclick="sendToTelegram()">Отправить...</button>
         </div>
     </section>
 
-    <!-- STEP 5: Final screen -->
     <section id="step-5" class="screen">
-        <div id="lottie-success" class="lottie-container"></div>
-        <h2>Message sent ❤️</h2>
+        <div id="lottie-success" class="lottie-container icon-finish"></div>
+        <div class="finish-text">
+            <h2 class="line">Улетает далеко,</h2>
+            <h2 class="line">похоже ко мне в сердце</h2>
+        </div>
     </section>
-
 </div>
-
-<!-- Main script -->
 <script src="script.js"></script>
-
 </body>
 </html>
